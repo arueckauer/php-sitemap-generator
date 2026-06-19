@@ -370,10 +370,10 @@ class SitemapGenerator
      * @throws InvalidArgumentException
      */
     public function validate(
-        string   $path,
-        string   $changeFrequency = null,
-        float    $priority = null,
-        array    $extensions = []): void
+        string    $path,
+        ?string   $changeFrequency = null,
+        ?float    $priority = null,
+        array     $extensions = []): void
     {
         if (!(1 <= mb_strlen($path) && mb_strlen($path) <= self::MAX_URL_LEN)) {
             throw new InvalidArgumentException(
@@ -416,12 +416,12 @@ class SitemapGenerator
      * @throws InvalidArgumentException
      */
     public function addURL(
-        string   $path,
-        DateTime $lastModified = null,
-        string   $changeFrequency = null,
-        float    $priority = null,
-        array    $alternates = null,
-        array    $extensions = []
+        string    $path,
+        ?DateTime $lastModified = null,
+        ?string   $changeFrequency = null,
+        ?float    $priority = null,
+        ?array    $alternates = null,
+        array     $extensions = []
     ): SitemapGenerator
     {
         $this->validate($path, $changeFrequency, $priority, $extensions);
@@ -495,12 +495,12 @@ class SitemapGenerator
      * @throws UnexpectedValueException
      */
     private function writeSitemapUrl(
-        string   $loc,
-        DateTime $lastModified = null,
-        string   $changeFrequency = null,
-        float    $priority = null,
-        array    $alternates = null,
-        array    $extensions = []
+        string    $loc,
+        DateTime  $lastModified = null,
+        ?string   $changeFrequency = null,
+        ?float    $priority = null,
+        ?array    $alternates = null,
+        array     $extensions = []
     ): void {
         $this->xmlWriter->startElement('url');
         $this->xmlWriter->writeElement('loc', $this->encodeEscapeURL($loc));
