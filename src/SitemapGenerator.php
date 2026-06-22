@@ -496,7 +496,7 @@ class SitemapGenerator
      */
     private function writeSitemapUrl(
         string    $loc,
-        DateTime  $lastModified = null,
+        ?DateTime  $lastModified = null,
         ?string   $changeFrequency = null,
         ?float    $priority = null,
         ?array    $alternates = null,
